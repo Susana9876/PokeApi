@@ -1,76 +1,58 @@
-// import logo from './logo.svg';
-// import React, { useEffect } from 'react';
-// import './App.css';
-
-// function App() {
-//   const url = 'https://pokeapi.co/api/v2/pokemon?limit=10';
-//   const fetchCharacteres = (url) => {
-//     fetch(url)
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(error => console.log(error))
-//   };
-
-//   useEffect(() => {
-//     fetchCharacteres(url);
-//   }, []);
-
-//   return (
-    
-//   );
-// }
-
-// export default App;
-
-import React, { useEffect, useState } from 'react'
+import React from "react";
 import Pokemon from './Components/Pokemon'
-//import PokemonDetails from './components/PokemonDetails'
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+const App=()=>{
+    const [pokeData,setPokeData]=useState([]);
+    const [loading,setLoading]=useState(true);
+    const [url,setUrl]=useState("https://pokeapi.co/api/v2/pokemon?limit=10")
+    const [nextUrl,setNextUrl]=useState();
+    const [prevUrl,setPrevUrl]=useState();
 
-const App = () => {
-
-   const[allPokemons, setAllPokemons] = useState([])
-   const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=10')
-
-  const getAllPokemons = async () => {
-    const res = await fetch(loadMore)
-    const data = await res.json()
-
-    setLoadMore(data.next)
-
-    function createPokemonObject(results)  {
-      results.forEach( async pokemon => {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
-        const data =  await res.json()
-        setAllPokemons( currentList => [...currentList, data])
-        await allPokemons.sort((a, b) => a.id - b.id)
-      })
+    const app=async()=>{
+        setLoading(true)
+        const res=await axios.get(url);
+        setNextUrl(res.data.next);
+        setPrevUrl(res.data.previous);
+        getPokemon(res.data.results)
+        setLoading(false)
     }
-    createPokemonObject(data.results)
-  }
+    const getPokemon=async(res)=>{
+       res.map(async(item)=>{
+          const result=await axios.get(item.url)
+          setPokeData(state=>{
+              state=[...state,result.data]
+              state.sort((a,b)=>a.id>b.id?1:-1)
+              return state;
+          })
+       })   
+    }
+    useEffect(()=>{
+        app();
+    },[url])
+    return(
+        <>
+            <div className="app-container">
+            <h1 className='title'>Pokemon</h1>
+                <div className="pokemon-container">
+                  <div className="all-container">
+                    <Pokemon pokemon={pokeData} loading={loading}/>
+                    
+                    <div className="div">
+                        {  prevUrl && <button className="load-more" onClick={()=>{setPokeData([])
+                            setUrl(prevUrl) 
+                        }}>Back</button>}
 
- useEffect(() => {
-  getAllPokemons()
- }, [])
-
-  return (
-    <div className="app-contaner">
-      <h1 className='title'>Pokemon</h1>
-      <div className="pokemon-container">
-        <div className="all-container">
-          {allPokemons.map( (pokemonStats, index) => 
-            <Pokemon
-              key={index}
-              id={pokemonStats.id}
-              image={pokemonStats.sprites.other.dream_world.front_default}
-              name={pokemonStats.name}
-              type={pokemonStats.types[0].type.name}
-            />)}
-          
-        </div>
-          <button className="load-more" onClick={() => getAllPokemons()}>Load more</button>
-      </div>
-    </div>
-  );
+                        { nextUrl && <button className="load-more" onClick={()=>{setPokeData([])
+                            setUrl(nextUrl)
+                        }}>Next</button>}
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
+        </>
+    )
 }
-
 export default App;

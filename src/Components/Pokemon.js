@@ -1,17 +1,25 @@
-import React from 'react'
 
-const Pokemon = ({id, image, name, type, _callback }) => {
-    const style = type + " thumb-container";
+import React from "react";
+const Pokemon = ({ pokemon}) => {
     return (
-        <div className={style}>
-            <div className="number"><small>#0{id}</small></div>
-            <img src={image} alt={name} />
-            <div className="detail-wrapper">
-                <h3>{name}</h3>
-                <small>Type: {type}</small>
-            </div>
-        </div>
+        <>
+        {
+                pokemon.map((item) => {
+                    return (
+                        <>
+                            <div className="card">
+                                <div className="number"><small>#0{item.id}</small></div>
+                                <img src={item.sprites.front_default} alt="" />
+                                <div className="detail-wrapper">
+                                <h3>{item.name}</h3>
+                                </div>
+                            </div>
+                        </>
+                    )
+                })
+        }
+
+        </>
     )
 }
-
-export default Pokemon
+export default Pokemon;
