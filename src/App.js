@@ -3,6 +3,7 @@ import Pokemon from './Components/Pokemon'
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import Search  from './Components/Search';
 const App=()=>{
     const [pokeData,setPokeData]=useState([]);
     const [loading,setLoading]=useState(true);
@@ -33,6 +34,7 @@ const App=()=>{
     },[url])
     return(
         <>
+            <Search/>
             <div className="app-container">
             <h1 className='title'>Pokemon</h1>
                 <div className="pokemon-container">
