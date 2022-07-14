@@ -1,4 +1,3 @@
-import pic from "../img/pic.jpeg"
 import { useTranslation } from "react-i18next";
 
 export function About(){

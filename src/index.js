@@ -6,7 +6,7 @@ import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import { Nav } from './routes/Nav';
 import { Home } from './Home';
-import { Pokemon_id } from './routes/Pokemon_id';
+import { PokemonId } from './routes/PokemonId';
 import { About } from './routes/About';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './config/localization/i18n';
@@ -14,13 +14,13 @@ import i18n from './config/localization/i18n';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <I18nextProvider i18n={i18n}>
-    <BrowserRouter>
+  <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>}>
         <Route path="*" element={<Navigate replace to="/"/>}/>
         <Route index element={<Nav/>}/>
         <Route path="pokemons" element={<App/>}/>
-        <Route path="pokemons/:pokemonId" element={<Pokemon_id/>}/>
+        <Route path="pokemons/:pokemonId" element={<PokemonId/>}/>
         <Route path="190922" element={<About/>}/>
       </Route>
     </Routes>
