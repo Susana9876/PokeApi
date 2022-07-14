@@ -19,7 +19,7 @@ code {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 3rem 0.5rem;
+  /* padding: 3rem 0.5rem; */
 }
 .pokemon-container {
   display: flex;
@@ -41,7 +41,7 @@ code {
   padding: 1.5rem 0 ;
   margin: 0.3rem;
   border: 1px solid lightgray;
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   min-width: 160px;
   text-align: center;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.089);
@@ -53,7 +53,7 @@ h3 {
 .number {
   border-radius: 1rem;
   padding: 0.2rem 0.4rem;
-  background-color: rgba(124, 124, 124, 0.3);
+  background-color: plum;
 }
 .card img {
   width: 150px;
@@ -68,17 +68,18 @@ h3 {
   width: 100%;
 }
 .detail-wrapper h3 {
-  color: rgb(22, 22, 22);
+  color: black;
   padding: .5rem;
   margin-top: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.185);
   border-radius: 0.2rem;
-  background-color: rgba(0, 0, 0, 0.185);
+  background-color: plum;
+  font-style: italic;
 }
 .load-more {
   border-radius: 10px;
-  border: 1px solid #4a59e4;
-  color: #444;
+  border: 1px solid purple;
+  color: black;
   padding: 0.5rem 1.5rem;
   min-width: 20%;
   margin-top: 1rem;
@@ -86,7 +87,8 @@ h3 {
 
 
 .title{
-  color: #444;
+  color: purple;
+  font-style: italic;
 }
 
 .div{
@@ -95,13 +97,13 @@ h3 {
 }
 
 .type{
-  background-color: rgb(203, 229, 238);
+  color: purple;
 }
 
 .navbar{
   display: flex;
-  margin: 0px auto;
-  padding: 25px;
+  /* margin: 0px auto;
+  padding: 25px; */
 }
 
 .input{
@@ -116,7 +118,7 @@ input:focus{
 }
 
 .search-boton{
-  background-color: green;
+  background-color: purple;
   color: white;
   border: none;
   border-radius: 5px;
@@ -126,4 +128,91 @@ input:focus{
 
 .content{
   width: 150px;
+}
+
+.navDad{
+  padding: 30px;
+}
+
+.navbarTop{
+  background-color:greenyellow;
+  display: flex;
+  border-radius: 50px;
+  justify-content: center;
+}
+
+.nav{
+  margin: 15px;
+  width: 100px;
+  justify-content: center;
+  font-style: italic;
+}
+
+.nav a{
+  text-decoration: none;
+  color: purple;
+  font-weight: bold;
+}
+
+.cardDad2{
+  /* margin-left: auto;
+  margin-right: auto; */
+    width: 90%;
+    height: 50%;
+    /* centrar vertical y horizontalmente */
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    margin: -25px 0 0 -25px; 
+}
+
+.cardInfo2{
+  width: 40%;
+  border: none;
+  border-radius: 15px;
+  background-color: plum;
+  padding: 20px;
+}
+
+.info{
+  background-color: lawngreen;
+  width: 60%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+.titleAbout{
+  color: purple;
+  font-size: 20px;
+  font-style: italic;
+}
+.info2{
+  background-color: white;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 130px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+}
+
+.title2{
+  padding: 10px;
+  font-style: italic;
+}
+
+.cardDad{
+  position: relative;
+  margin-top: 30px;
+}
+
+.back{
+  width: 100%;
+  height: 100%;
+}
+
+.imgHome{
+  width: 100%;
+  height: 100%;
 }

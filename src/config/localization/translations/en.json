@@ -1,0 +1,11 @@
+{
+    "nav1": "Home",
+    "nav2": "Pokemons",
+    "nav3": "About",
+    "placeholder": "Search pokemon",
+    "btnSearch": "Search",
+    "titlePokemon": "Pokemon",
+    "btnNext": "Next",
+    "btnBack": "Back",
+    "personalInfo": "Personal Information"
+}

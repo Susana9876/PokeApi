@@ -3,8 +3,10 @@ import Pokemon from './Components/Pokemon'
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Search  from './Components/Search';
 const App=()=>{
+    const { t } = useTranslation();
     const [pokeData,setPokeData]=useState([]);
     const [loading,setLoading]=useState(true);
     const [url,setUrl]=useState("https://pokeapi.co/api/v2/pokemon?limit=10")
@@ -34,9 +36,9 @@ const App=()=>{
     },[url])
     return(
         <>
-            <Search/>
+            {/* <Search/> */}
             <div className="app-container">
-            <h1 className='title'>Pokemon</h1>
+            <h1 className='title'>{t("titlePokemon")}</h1>
                 <div className="pokemon-container">
                   <div className="all-container">
                     <Pokemon pokemon={pokeData} loading={loading}/>
@@ -44,11 +46,11 @@ const App=()=>{
                     <div className="div">
                         {  prevUrl && <button className="load-more" onClick={()=>{setPokeData([])
                             setUrl(prevUrl) 
-                        }}>Back</button>}
+                        }}>{t("btnBack")}</button>}
 
                         { nextUrl && <button className="load-more" onClick={()=>{setPokeData([])
                             setUrl(nextUrl)
-                        }}>Next</button>}
+                        }}>{t("btnNext")}</button>}
                     </div>
                   </div>
                 </div>

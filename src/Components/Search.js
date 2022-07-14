@@ -1,8 +1,10 @@
 import React from "react";
 import { searchPokemon } from "../api";
+import { useTranslation } from "react-i18next";
 const {useState} = React;
 
 const Search = () => {
+    const { t } = useTranslation();
     const [searching, setSearch] = useState('');
     const [pokemon, setPokemon] = useState();
     const onChange = (e) =>{
@@ -18,12 +20,12 @@ const Search = () => {
             <div>
                 <input
                     className="input"
-                    placeholder="Buscar pokemon"
+                    placeholder={t("placeholder")}
                     onChange={onChange}
                     />
             </div>
             <div>
-                <button className="search-boton" onClick={onClick}>Buscar</button>
+                <button className="search-boton" onClick={onClick}>{t("btnSearch")}</button>
             </div>
             <div className="content">
                 {pokemon && 
