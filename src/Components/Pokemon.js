@@ -1,9 +1,13 @@
 
 import { Link, Outlet } from "react-router-dom";
-import React from "react";
+import React, {useContext, useState} from "react";
 import { useTranslation } from "react-i18next";
-const Pokemon = ({ pokemon}) => {
+import { GlobalContext } from "../context/contextGlobal";
+// import { GlobalContext } from "";
+const Pokemon = ({pokemon}) => {
+    const [NameNum] = useState('');
     const { t } = useTranslation();
+    const { handleCount } = useContext(GlobalContext);
     return (
         <>
         {
@@ -16,7 +20,18 @@ const Pokemon = ({ pokemon}) => {
                                 <div className="detail-wrapper">
                                 <h3>{item.name}</h3>
                                 <small className="type">Type: {item.types[0].type.name}</small>
-                                <Link to="/pokemons/:pokemonId" className="link">{t("btnWatch")}</Link>
+                                {/* <Link to="/pokemons/:pokemonId" onClick={() => {
+                                    handleCount(item.data.id.toString());
+                                    }} className="link">{t("btnWatch")}</Link> */}
+                                <Link
+                                    to="/pokemons/:pokemonId"
+                                    onClick={() => {
+                                    handleCount(NameNum.toString());
+                                }}
+                                >
+                                    {t("btnSearch")}
+                                </Link>
+                                
                                 {/* <button className="btnWatch">{t("btnWatch")}</button> */}
                                 </div>
 

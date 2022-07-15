@@ -106,6 +106,15 @@ h3 {
   padding: 25px; */
 }
 
+.btnS a{
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 36px;
+}
+
 .input{
   padding: 10px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -117,14 +126,14 @@ input:focus{
   outline: none;
 }
 
-.search-boton{
+/* .search-boton a{
   background-color: purple;
   color: white;
   border: none;
   border-radius: 5px;
   width: 100px;
-  height: 36px;
-}
+  height: 40px;
+} */
 
 .content{
   width: 150px;
@@ -227,9 +236,11 @@ input:focus{
   width: 70px;
   height: 30px;
   border-radius: 5px;
-  background: rgba(255, 255, 255,0);
-  background: linear-gradient(90deg, rgba(33,36,187,1) 0%, rgba(255,255,255,0) 50%, rgba(255,0,0,1) 100%);
-  font-size: medium;
+  background: linear-gradient(to right, 
+      red 0%, 
+      white 50%, 
+      blue  100%);
+  font-size: large;
   font-style: italic;
 }
 
@@ -238,9 +249,11 @@ input:focus{
   width: 70px;
   height: 30px;
   border-radius: 5px;
-  background: rgba(255, 255, 255,0);
-  background: linear-gradient(90deg, rgba(33,187,56,1) 0%, rgba(255,255,255,0) 59%, rgba(255,0,0,1) 100%);
-  font-size: medium;
+  background: linear-gradient(to right, 
+      green    0%, 
+      white  50%, 
+      red  100%);
+  font-size: large;
   font-style: italic;
 }
 

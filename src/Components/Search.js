@@ -1,33 +1,51 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { Link, Outlet } from "react-router-dom";
 import { searchPokemon } from "../api";
+import { GlobalContext } from "../context/contextGlobal";
 import { useTranslation } from "react-i18next";
-const {useState} = React;
+// const {useState, useContext} = React;
 
 const Search = () => {
     const { t } = useTranslation();
-    const [searching, setSearch] = useState('');
-    const [pokemon, setPokemon] = useState();
-    const onChange = (e) =>{
-        setSearch(e.target.value);
-    }
-    const onClick = async (e) =>{
-        const data = await searchPokemon(searching);
-        setPokemon(data);
-        console.log(data);
-    };
+    const { handleCount } = useContext(GlobalContext);
+    const [NameNum, SetNameNum] = useState('');
+    
+    // searching, setSearch, 
+    // const [pokemon, setPokemon] = useState();
+    // const onChange = (e) =>{
+    //     setSearch(e.target.value);
+    // }
+    // const onClick = async (e) =>{
+    //     const data = await searchPokemon(searching);
+    //     setPokemon(data);
+    //     console.log(data);
+    // };
     return (
         <nav className="navbar">
             <div>
                 <input
                     className="input"
+                    type="search"
                     placeholder={t("placeholder")}
-                    onChange={onChange}
+                    pattern="[A-Za-z ]"
+                    onChange={(event) => {
+                    SetNameNum(event.target.value);
+                    }}
                     />
+
             </div>
             <div>
-                <button className="search-boton" onClick={onClick}>{t("btnSearch")}</button>
+            <Link
+                to="/pokemons/:pokemonId"
+                onClick={() => {
+                  handleCount(NameNum.toString());
+                }}
+              >
+                {t("btnSearch")}
+            </Link>
+                {/* <button className="search-boton" onClick={onClick}>{t("btnSearch")}</button> */}
             </div>
-            <div className="content">
+            {/* <div className="content">
                 {pokemon && 
                 <div className="card">
                 <div className="number"><small>{pokemon.id}</small></div>
@@ -38,7 +56,7 @@ const Search = () => {
                 </div>
             </div>
                 }
-            </div>
+            </div> */}
         </nav>
     );
 };

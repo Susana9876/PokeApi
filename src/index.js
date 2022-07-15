@@ -10,9 +10,11 @@ import { PokemonId } from './routes/PokemonId';
 import { About } from './routes/About';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './config/localization/i18n';
+import { GlobalProvider } from "./context/contextGlobal";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <GlobalProvider>
   <I18nextProvider i18n={i18n}>
   <BrowserRouter>
     <Routes>
@@ -26,6 +28,7 @@ root.render(
     </Routes>
   </BrowserRouter>
   </I18nextProvider>
+  </GlobalProvider>
 );
 
 
