@@ -23,14 +23,14 @@ const Pokemon = ({pokemon}) => {
                                 {/* <Link to="/pokemons/:pokemonId" onClick={() => {
                                     handleCount(item.data.id.toString());
                                     }} className="link">{t("btnWatch")}</Link> */}
-                                <Link
+                                {/* <Link
                                     to="/pokemons/:pokemonId"
                                     onClick={() => {
                                     handleCount(NameNum.toString());
                                 }}
                                 >
                                     {t("btnSearch")}
-                                </Link>
+                                </Link> */}
                                 
                                 {/* <button className="btnWatch">{t("btnWatch")}</button> */}
                                 </div>
